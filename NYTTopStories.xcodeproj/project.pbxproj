@@ -99,6 +99,7 @@
 		4D62206E216943460002895D /* NYTTopStories */ = {
 			isa = PBXGroup;
 			children = (
+				4D6220A121694A9A0002895D /* Model */,
 				4D6220A02169474B0002895D /* Controller */,
 				4D62209F2169471E0002895D /* View */,
 				4D62206F216943460002895D /* AppDelegate.swift */,
@@ -142,6 +143,13 @@
 				4D622073216943460002895D /* DetailViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		4D6220A121694A9A0002895D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
