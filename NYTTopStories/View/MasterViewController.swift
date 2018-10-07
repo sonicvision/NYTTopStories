@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MasterViewController: UITableViewController {
 
@@ -19,42 +20,8 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        navigationItem.leftBarButtonItem = editButtonItem
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
         topStoriesViewModel.getTopStories()
         topStoriesViewModel.delegate = self
-        
-//                let urlString = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=c0488184c7044cb4ac3be54e7d89cc81"
-//                guard let url = URL(string: urlString) else { return }
-//
-//                URLSession.shared.dataTask(with: url) { (data, response, error) in
-//                    if error != nil {
-//                        print(error!.localizedDescription)
-//                    }
-//
-//                    guard let data = data else { return }
-//                    //Implement JSON decoding and parsing
-//                    do {
-//                        //Decode retrived data with JSONDecoder and assing type of Article object
-//                        let articlesData = try JSONDecoder().decode(TopStoryResult.self, from: data)
-//
-//                        //Get back to the main queue
-//                        DispatchQueue.main.async {
-//                            print(articlesData)
-//                            //self.articles = articlesData
-//                            //self.collectionView?.reloadData()
-//                        }
-//
-//                    } catch let jsonError {
-//                        print(jsonError)
-//                    }            }.resume()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,15 +61,35 @@ class MasterViewController: UITableViewController {
         return 1
     }
 
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 150
+//    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        if(self.topStoriesViewModel.topStories.count==0){
+            self.tableView.separatorStyle = .none
+        }else{
+            self.tableView.separatorStyle = .singleLine
+        }
+        
+        return self.topStoriesViewModel.topStories.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell:TopStoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TopStoryTableViewCell
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        cell.author.text = self.topStoriesViewModel.topStories[indexPath.row].author
+        cell.title.text = self.topStoriesViewModel.topStories[indexPath.row].title
+        
+        let url = URL(string: self.topStoriesViewModel.topStories[indexPath.row].smallImageUrl)
+//        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+////        cell.imageView?.image = UIImage(data: data!)
+        let newsImage = #imageLiteral(resourceName: "news")
+
+        cell.thumbnailImage.kf.setImage(with: url, placeholder: newsImage, options: nil, progressBlock: nil, completionHandler: nil)
+//        let image = UIImage(named: "default_profile_icon")
+//        imageView.kf.setImage(with: url, placeholder: image)
+//        cell.imageView?.imageFromUrl(urlString: self.topStoriesViewModel.topStories[indexPath.row].smallImageUrl)
+
         return cell
     }
 
@@ -127,9 +114,22 @@ extension MasterViewController: TopStoriesDelegate {
     func topStoriesDidChange() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            print(self.topStoriesViewModel.topStories)
+            //print(self.topStoriesViewModel.topStories)
         }
     }
 
 }
 
+extension UIImageView {
+    public func imageFromUrl(urlString: String) {
+        if let url = NSURL(string: urlString) {
+            let request = NSURLRequest(url:url as URL)
+            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main) {
+                (response: URLResponse?, data: Data?, error: Error?) -> Void in
+                if let imageData = data as Data? {
+                    self.image = UIImage(data: imageData as Data)
+                }
+            }
+        }
+    }
+}
