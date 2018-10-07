@@ -6,22 +6,12 @@
 //  Copyright © 2018 Proapptive Solutions. All rights reserved.
 //
 
-import UIKit
-
-struct TopStoryImage : Codable{
-    let url : String
-    let format : String
-}
-
-struct Topstory : Codable {
+struct Topstory {
     let title : String
-    let byline:String
+    let author:String
     let subsection:String
-    let abstract:String
-    let url:String
-    let multimedia: [TopStoryImage]
-}
-
-struct TopStoryResult : Codable {
-    let results : [Topstory]
+    let description:String
+    let seeMoreUrl:String
+    let smallImageUrl: String
+    let largeImageUrl: String
 }

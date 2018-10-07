@@ -13,8 +13,8 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
 
-    var viewModel = TopStoryListViewModel()
-    
+    var topStoriesViewModel:TopStoryListViewModel =  TopStoryListViewModel()
+
 
     override func viewDidLoad() {
         
@@ -28,7 +28,8 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
-        viewModel.fetchTopStories()
+        topStoriesViewModel.getTopStories()
+        topStoriesViewModel.delegate = self
         
 //                let urlString = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=c0488184c7044cb4ac3be54e7d89cc81"
 //                guard let url = URL(string: urlString) else { return }
@@ -119,6 +120,16 @@ class MasterViewController: UITableViewController {
         }
     }
 
+
+}
+
+extension MasterViewController: TopStoriesDelegate {
+    func topStoriesDidChange() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            print(self.topStoriesViewModel.topStories)
+        }
+    }
 
 }
 

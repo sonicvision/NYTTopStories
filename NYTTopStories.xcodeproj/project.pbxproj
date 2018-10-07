@@ -17,6 +17,7 @@
 		4D6220922169434B0002895D /* NYTTopStoriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6220912169434B0002895D /* NYTTopStoriesUITests.swift */; };
 		4D6220A421694D050002895D /* TopStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6220A321694D050002895D /* TopStory.swift */; };
 		4D6220A92169576B0002895D /* TopStoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6220A82169576B0002895D /* TopStoryListViewModel.swift */; };
+		4D9A77DF216A8FA5002074B5 /* TopStoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A77DE216A8FA5002074B5 /* TopStoryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		4D6220932169434B0002895D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D6220A321694D050002895D /* TopStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStory.swift; sourceTree = "<group>"; };
 		4D6220A82169576B0002895D /* TopStoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoryListViewModel.swift; sourceTree = "<group>"; };
+		4D9A77DE216A8FA5002074B5 /* TopStoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		4D62206E216943460002895D /* NYTTopStories */ = {
 			isa = PBXGroup;
 			children = (
+				4D9A77DD216A8F67002074B5 /* Service */,
 				4D6220A521694EBC0002895D /* ViewModel */,
 				4D6220A121694A9A0002895D /* Model */,
 				4D6220A02169474B0002895D /* Controller */,
@@ -164,6 +167,14 @@
 				4D6220A82169576B0002895D /* TopStoryListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4D9A77DD216A8F67002074B5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4D9A77DE216A8FA5002074B5 /* TopStoryService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +313,7 @@
 				4D6220A421694D050002895D /* TopStory.swift in Sources */,
 				4D622072216943460002895D /* MasterViewController.swift in Sources */,
 				4D622070216943460002895D /* AppDelegate.swift in Sources */,
+				4D9A77DF216A8FA5002074B5 /* TopStoryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
