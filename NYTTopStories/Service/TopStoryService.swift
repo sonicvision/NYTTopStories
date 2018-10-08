@@ -11,14 +11,14 @@ import Foundation
 class TopStoryService {
     
     func fetchTopStories(completionHanlder: @escaping (_ topStoriesData: Data ) -> Void){
-        let urlString = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=c0488184c7044cb4ac3be54e7d89cc81"
+
+        let urlString = "\(UtilityService.fetchValueFromPlist(keyName: "NYT_APP_URL"))?api-key=\(UtilityService.fetchValueFromPlist(keyName: "NYT_API_KEY"))"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error!.localizedDescription)
             }
-            
             guard let data = data else { return }
             completionHanlder(data)
 

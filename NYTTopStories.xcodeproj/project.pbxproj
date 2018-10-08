@@ -21,6 +21,7 @@
 		4D9A77E1216AAADB002074B5 /* TopStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A77E0216AAADB002074B5 /* TopStoryTableViewCell.swift */; };
 		4D9A77E3216ADF00002074B5 /* NewsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A77E2216ADF00002074B5 /* NewsWebViewController.swift */; };
 		4D9A781F216B6A71002074B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A781E216B6A70002074B5 /* Assets.xcassets */; };
+		4D9A7822216B7C15002074B5 /* UtilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7821216B7C15002074B5 /* UtilityService.swift */; };
 		A5B1E603D49612BE1A068EBD /* Pods_NYTTopStoriesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC41510C86969F808674D219 /* Pods_NYTTopStoriesTests.framework */; };
 		A9216294DF391298BC488121 /* Pods_NYTTopStories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D7EBC308DAD0FFD044B10 /* Pods_NYTTopStories.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		4D9A77E0216AAADB002074B5 /* TopStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoryTableViewCell.swift; sourceTree = "<group>"; };
 		4D9A77E2216ADF00002074B5 /* NewsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWebViewController.swift; sourceTree = "<group>"; };
 		4D9A781E216B6A70002074B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4D9A7821216B7C15002074B5 /* UtilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityService.swift; sourceTree = "<group>"; };
 		AC41510C86969F808674D219 /* Pods_NYTTopStoriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTTopStoriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF2A5BF98049EB3363DFCC91 /* Pods-NYTTopStories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTTopStories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYTTopStories/Pods-NYTTopStories.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				4D9A77DE216A8FA5002074B5 /* TopStoryService.swift */,
+				4D9A7821216B7C15002074B5 /* UtilityService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 			files = (
 				4D9A77E3216ADF00002074B5 /* NewsWebViewController.swift in Sources */,
 				4D6220A92169576B0002895D /* TopStoryListViewModel.swift in Sources */,
+				4D9A7822216B7C15002074B5 /* UtilityService.swift in Sources */,
 				4D622074216943460002895D /* DetailViewController.swift in Sources */,
 				4D6220A421694D050002895D /* TopStory.swift in Sources */,
 				4D9A77E1216AAADB002074B5 /* TopStoryTableViewCell.swift in Sources */,
