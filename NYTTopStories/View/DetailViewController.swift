@@ -19,15 +19,15 @@ class DetailViewController: UIViewController {
     var topStory : Topstory!
     
     func configureView() {
-        // Update the user interface for the detail item.
         if let detail = topStory {
             author.text = detail.author
             newsTitle.text = detail.title
             newsDescription.text = detail.description
-            let url = URL(string: detail.largeImageUrl)
-            let newsImage = #imageLiteral(resourceName: "news")
             
+            let url = URL(string: detail.largeImageUrl)
+            let newsImage = UIImage(named: "news")
             largeImage.kf.setImage(with: url, placeholder: newsImage, options: nil, progressBlock: nil, completionHandler: nil)
+            
             if(detail.subsection.count > 0){
                 self.title = detail.subsection
             }
@@ -37,21 +37,17 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         configureView()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "seeMore" {
-//            let controller = (segue.destination as! UINavigationController).topViewController as! NewsWebViewController
             let controller = segue.destination as? NewsWebViewController
             controller?.newsUrl = self.topStory.seeMoreUrl
-            
         }
     }
     
