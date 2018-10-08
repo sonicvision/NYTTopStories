@@ -8,10 +8,14 @@
 
 import Foundation
 
+// This Service is used for fetching top stories from NYT API
+
+
 class TopStoryService {
     
     func fetchTopStories(completionHanlder: @escaping (_ topStoriesData: Data ) -> Void){
-
+        
+        //Fetch the value of API_URL and API_KEY from the plist
         let urlString = "\(UtilityService.fetchValueFromPlist(keyName: "NYT_APP_URL"))?api-key=\(UtilityService.fetchValueFromPlist(keyName: "NYT_API_KEY"))"
         guard let url = URL(string: urlString) else { return }
         
@@ -21,7 +25,6 @@ class TopStoryService {
             }
             guard let data = data else { return }
             completionHanlder(data)
-
         }.resume()
     }
 }

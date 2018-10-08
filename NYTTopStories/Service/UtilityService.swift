@@ -7,6 +7,8 @@
 //
 
 import Foundation
+// This is a Utility Service which can be used for helper functions.
+// As of now its being used to fetch value from Info.plist
 
 class UtilityService {
     static func fetchValueFromPlist(keyName:String) -> String {

@@ -18,7 +18,6 @@ class MasterViewController: UITableViewController {
     let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         topStoriesViewModel.getTopStories()
@@ -81,7 +80,7 @@ class MasterViewController: UITableViewController {
         return cell
     }
 }
-
+// Delegate function will be invoked by View Model when the Top Stories are fetched
 extension MasterViewController: TopStoriesDelegate {
     func topStoriesDidChange() {
         DispatchQueue.main.async {

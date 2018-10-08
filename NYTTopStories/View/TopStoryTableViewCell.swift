@@ -8,6 +8,9 @@
 
 import UIKit
 
+// The Table View cell which will be used by Table view to show
+// the list of the top stories
+
 class TopStoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!

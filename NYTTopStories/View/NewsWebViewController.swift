@@ -23,6 +23,8 @@ class NewsWebViewController: UIViewController, WKNavigationDelegate {
         activityIndicator.startAnimating()
     }
 
+    //This function is called when the page has loaded
+    //Activity indicator is stopped on the same
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true

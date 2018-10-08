@@ -18,6 +18,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var largeImage: UIImageView!
     var topStory : Topstory!
     
+    //The configureView function configures the detail view
+    //based on the news selected on the previous screen
     func configureView() {
         if let detail = topStory {
             author.text = detail.author

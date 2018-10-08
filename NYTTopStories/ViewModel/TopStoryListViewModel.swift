@@ -8,30 +8,42 @@
 
 import Foundation
 
+//Delegate protocol to be implemented by the Controller,
+//so that it can be notified whenever there is a change in data
 protocol TopStoriesDelegate {
     func topStoriesDidChange()
 }
 
+//Protocol to specify what all has to be conformed to in
+//regard to showing the Top Stories as a list
 protocol TopStoriesViewModelType {
     var topStories: [Topstory] {get}
     func getTopStories()
     var delegate: TopStoriesDelegate? {get set }
 }
 
+// ViewModel class which conforms to the TopStoriesViewModelType protocol
+// It shall also be notifying controller when the api returns top stories
+// so that the same can be updated
 
 class TopStoryListViewModel:TopStoriesViewModelType {
     var delegate: TopStoriesDelegate?
     let topStoryService = TopStoryService()
     
+    //The delegate would be notified when the top stories are set
     var topStories: [Topstory] = [] {
         didSet{
             delegate?.topStoriesDidChange()
         }
     }
     
+    
     func getTopStories()  {
         topStoryService.fetchTopStories(completionHanlder: { (data) in
             do {
+                
+                //Below is the parsing logic for extracting the values from the
+                //response given by NYT API
                 let jsonResponse = try JSONSerialization.jsonObject(with:
                     data, options: [])
                 guard let jsonObject = jsonResponse as? [String: Any] else {
@@ -67,6 +79,7 @@ class TopStoryListViewModel:TopStoriesViewModelType {
                     
                     topStories.append(Topstory(title: title, author: byline, subsection: subsection, description: abstract, seeMoreUrl: url, smallImageUrl: thumbnailUrl, largeImageUrl: mediumImageUrl))
                 }
+                //Setting up the created array of top stories into the ViewModel variable
                 self.topStories = topStories
             } catch let parsingError {
                 print("Error", parsingError)
