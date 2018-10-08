@@ -9,6 +9,7 @@
 import XCTest
 @testable import NYTTopStories
 
+
 class NYTTopStoriesTests: XCTestCase {
     
     override func setUp() {
@@ -26,6 +27,13 @@ class NYTTopStoriesTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func test_title_is_TopStories() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let topStoriesView = (storyboard.instantiateInitialViewController() as! UINavigationController).topViewController as! MasterViewController
+        let _ = topStoriesView.view
+        XCTAssertEqual("Master", topStoriesView.title!)
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
